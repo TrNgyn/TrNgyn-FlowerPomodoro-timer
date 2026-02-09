@@ -34,9 +34,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
-    padding: 20px 0;
+    padding: 20px 0 60px 0;
     max-height: 500px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Flower card */

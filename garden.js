@@ -3,6 +3,12 @@
 let currentSort = 'newest';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Apply background color from settings
+    const settings = Storage.getSettings();
+    if (settings.backgroundColor) {
+        document.body.style.background = settings.backgroundColor;
+    }
+
     loadGarden();
     setupControls();
 });

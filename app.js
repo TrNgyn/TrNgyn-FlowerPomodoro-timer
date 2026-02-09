@@ -21,6 +21,11 @@ class PomodoroTimer {
         this.workDuration = settings.workDuration;
         this.breakDuration = settings.breakDuration;
 
+        // Apply background color
+        if (settings.backgroundColor) {
+            this.applyBackgroundColor(settings.backgroundColor);
+        }
+
         // Initialize UI
         this.updateTimerDisplay();
         this.updateStatsDisplay();
@@ -268,20 +273,26 @@ class PomodoroTimer {
             const settings = Storage.getSettings();
             document.getElementById('workDuration').value = settings.workDuration;
             document.getElementById('breakDuration').value = settings.breakDuration;
+            document.getElementById('backgroundColor').value = settings.backgroundColor || '#ffeaa7';
         }
     }
 
     saveSettings() {
         const workDuration = document.getElementById('workDuration').value;
         const breakDuration = document.getElementById('breakDuration').value;
+        const backgroundColor = document.getElementById('backgroundColor').value;
 
         const settings = Storage.saveSettings({
             workDuration: workDuration,
-            breakDuration: breakDuration
+            breakDuration: breakDuration,
+            backgroundColor: backgroundColor
         });
 
         this.workDuration = settings.workDuration;
         this.breakDuration = settings.breakDuration;
+
+        // Apply background color
+        this.applyBackgroundColor(settings.backgroundColor);
 
         // Update timer display if idle
         if (this.state === 'idle') {
@@ -300,6 +311,11 @@ class PomodoroTimer {
         setTimeout(() => {
             sessionType.textContent = originalText;
         }, 2000);
+    }
+
+    applyBackgroundColor(color) {
+        // Apply solid color instead of gradient
+        document.body.style.background = color;
     }
 }
 

@@ -15,7 +15,8 @@ const Storage = {
             },
             settings: {
                 workDuration: 25,
-                breakDuration: 5
+                breakDuration: 5,
+                backgroundColor: '#ffeaa7'
             },
             garden: [] // Array of completed flowers
         };
@@ -92,7 +93,8 @@ const Storage = {
         const data = this.loadData();
         data.settings = {
             workDuration: parseInt(settings.workDuration) || 25,
-            breakDuration: parseInt(settings.breakDuration) || 5
+            breakDuration: parseInt(settings.breakDuration) || 5,
+            backgroundColor: settings.backgroundColor || '#ffeaa7'
         };
         this.saveData(data);
         return data.settings;
