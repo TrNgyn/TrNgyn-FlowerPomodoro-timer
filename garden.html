@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flower Garden - Flower Pomodoro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="garden.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌸 My Flower Garden</h1>
+            <p class="tagline">Your collection of focused moments</p>
+            <div class="header-buttons">
+                <a href="index.html" class="icon-btn" aria-label="Back to Timer">⏱️</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Empty state (shown when no flowers) -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">🌱</div>
+                <h2>No flowers yet!</h2>
+                <p>Complete a focus session to grow your first flower</p>
+                <a href="index.html" class="btn btn-primary">Start Focusing</a>
+            </div>
+
+            <!-- Garden grid (shown when flowers exist) -->
+            <div id="gardenGrid" class="garden-grid hidden">
+                <!-- Flowers will be rendered here by garden.js -->
+            </div>
+
+            <!-- Garden stats -->
+            <div id="gardenStats" class="garden-stats hidden">
+                <p>Total flowers: <strong id="flowerCount">0</strong></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="flower.js"></script>
+    <script src="garden.js"></script>
+</body>
+</html>

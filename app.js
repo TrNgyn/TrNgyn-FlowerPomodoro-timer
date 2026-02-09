@@ -10,6 +10,7 @@ class PomodoroTimer {
         this.animationFrameId = null;
         this.workDuration = 25;
         this.breakDuration = 5;
+        this.currentFlowerType = null; // Current flower being grown
 
         this.init();
     }
@@ -30,9 +31,10 @@ class PomodoroTimer {
         // Set up keyboard shortcuts
         this.setupKeyboardShortcuts();
 
-        // Initialize flower
+        // Initialize flower with random type
         if (typeof Flower !== 'undefined') {
-            Flower.init();
+            this.currentFlowerType = Storage.getRandomFlowerType();
+            Flower.init(this.currentFlowerType);
         }
     }
 
@@ -69,7 +71,12 @@ class PomodoroTimer {
 
     start() {
         if (this.state === 'idle') {
-            // Starting fresh
+            // Starting fresh - select a new random flower
+            this.currentFlowerType = Storage.getRandomFlowerType();
+            if (typeof Flower !== 'undefined') {
+                Flower.init(this.currentFlowerType);
+            }
+
             this.totalTime = this.workDuration * 60;
             this.timeRemaining = this.totalTime;
             this.state = 'running';
@@ -130,9 +137,10 @@ class PomodoroTimer {
         this.updateButtonStates();
         this.updateBodyClass();
 
-        // Reset flower
+        // Reset flower (select new random type)
         if (typeof Flower !== 'undefined') {
-            Flower.reset();
+            this.currentFlowerType = Storage.getRandomFlowerType();
+            Flower.init(this.currentFlowerType);
         }
     }
 
@@ -162,6 +170,11 @@ class PomodoroTimer {
             // Work session completed
             const stats = Storage.updateStats(this.workDuration);
             this.updateStatsDisplay();
+
+            // Save completed flower to garden
+            if (this.currentFlowerType) {
+                Storage.saveCompletedFlower(this.currentFlowerType, this.workDuration);
+            }
 
             // Show completion and start break
             this.state = 'break';

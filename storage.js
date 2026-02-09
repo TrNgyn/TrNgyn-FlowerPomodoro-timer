@@ -16,7 +16,8 @@ const Storage = {
             settings: {
                 workDuration: 25,
                 breakDuration: 5
-            }
+            },
+            garden: [] // Array of completed flowers
         };
     },
 
@@ -102,5 +103,44 @@ const Storage = {
         const defaultData = this.getDefaultData();
         this.saveData(defaultData);
         return defaultData;
+    },
+
+    // Garden functionality
+
+    // Get all flowers in the garden
+    getGarden() {
+        const data = this.loadData();
+        return data.garden || [];
+    },
+
+    // Save a completed flower to the garden
+    saveCompletedFlower(flowerType, duration) {
+        const data = this.loadData();
+        if (!data.garden) {
+            data.garden = [];
+        }
+
+        const flower = {
+            id: this.generateId(),
+            type: flowerType,
+            completedAt: new Date().toISOString(),
+            duration: duration
+        };
+
+        data.garden.push(flower);
+        this.saveData(data);
+        return flower;
+    },
+
+    // Get a random flower type
+    getRandomFlowerType() {
+        const types = ['rose', 'sunflower', 'tulip', 'daisy', 'lavender', 'lotus', 'cherry', 'poppy'];
+        const randomIndex = Math.floor(Math.random() * types.length);
+        return types[randomIndex];
+    },
+
+    // Generate a simple unique ID
+    generateId() {
+        return Date.now().toString(36) + Math.random().toString(36).substr(2);
     }
 };

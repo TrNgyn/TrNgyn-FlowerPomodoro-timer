@@ -1,0 +1,148 @@
+/* Garden page specific styles */
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    animation: sway 2s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.empty-state h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* Garden grid */
+.garden-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Flower card */
+.flower-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.5s ease-in;
+}
+
+.flower-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.flower-card svg {
+    width: 120px;
+    height: 180px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Garden stats */
+.garden-stats {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f1f3f5;
+    text-align: center;
+}
+
+.garden-stats p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.garden-stats strong {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .garden-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+        max-height: 400px;
+    }
+
+    .flower-card {
+        padding: 15px;
+    }
+
+    .flower-card svg {
+        width: 100px;
+        height: 150px;
+    }
+
+    .empty-state {
+        padding: 40px 20px;
+    }
+
+    .empty-icon {
+        font-size: 4rem;
+    }
+
+    .empty-state h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .garden-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+/* Scrollbar styling for garden grid */
+.garden-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.garden-grid::-webkit-scrollbar-track {
+    background: #f1f3f5;
+    border-radius: 10px;
+}
+
+.garden-grid::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.garden-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
