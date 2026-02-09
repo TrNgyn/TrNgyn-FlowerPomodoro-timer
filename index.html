@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Pomodoro - Focus & Grow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Flower Pomodoro</h1>
+            <p class="tagline">Grows flowers as you focus</p>
+            <button id="settingsToggle" class="icon-btn" aria-label="Toggle Settings">⚙️</button>
+        </header>
+
+        <main>
+            <!-- Settings Panel (hidden by default) -->
+            <div id="settingsPanel" class="settings-panel hidden">
+                <h2>Settings</h2>
+                <div class="setting-group">
+                    <label for="workDuration">Work Duration (minutes):</label>
+                    <input type="number" id="workDuration" min="1" max="120" value="25">
+                </div>
+                <div class="setting-group">
+                    <label for="breakDuration">Break Duration (minutes):</label>
+                    <input type="number" id="breakDuration" min="1" max="60" value="5">
+                </div>
+                <button id="saveSettings" class="btn btn-primary">Save Settings</button>
+            </div>
+
+            <!-- Flower Container -->
+            <div class="flower-container">
+                <svg id="flowerSvg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Flower will be rendered by flower.js -->
+                </svg>
+            </div>
+
+            <!-- Timer Display -->
+            <div class="timer-display">
+                <div id="timerText" class="timer-text">25:00</div>
+                <div id="sessionType" class="session-type">Ready to focus?</div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary" aria-label="Start Timer">Start</button>
+                <button id="pauseBtn" class="btn btn-secondary hidden" aria-label="Pause Timer">Pause</button>
+                <button id="skipBtn" class="btn btn-secondary" aria-label="Skip Session">Skip</button>
+                <button id="resetBtn" class="btn btn-secondary" aria-label="Reset Timer">Reset</button>
+            </div>
+        </main>
+
+        <footer>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Today:</span>
+                    <span id="todaySessions" class="stat-value">0</span>
+                    <span class="stat-unit">sessions</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Focus:</span>
+                    <span id="totalMinutes" class="stat-value">0</span>
+                    <span class="stat-unit">minutes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">All Time:</span>
+                    <span id="totalSessions" class="stat-value">0</span>
+                    <span class="stat-unit">sessions</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="flower.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

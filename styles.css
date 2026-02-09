@@ -1,0 +1,330 @@
+:root {
+    --primary-color: #ff6b9d;
+    --secondary-color: #c44569;
+    --success-color: #4CAF50;
+    --background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: var(--white);
+    border-radius: 30px;
+    box-shadow: var(--shadow-lg);
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.tagline {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.icon-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 5px;
+}
+
+.icon-btn:hover {
+    transform: rotate(90deg);
+}
+
+/* Settings Panel */
+.settings-panel {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: var(--transition);
+}
+
+.settings-panel h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.setting-group {
+    margin-bottom: 15px;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.setting-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.setting-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Flower Container */
+.flower-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    margin-bottom: 20px;
+}
+
+#flowerSvg {
+    width: 200px;
+    height: 300px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Flower Growth Stages */
+.flower-part {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seed {
+    opacity: 1;
+}
+
+.stem, .leaves, .bud, .petals {
+    opacity: 0;
+    transform-origin: bottom center;
+}
+
+/* Stage animations */
+.stage-0 .seed { opacity: 1; }
+
+.stage-1 .stem { opacity: 1; transform: scaleY(0.3); }
+
+.stage-2 .stem { opacity: 1; transform: scaleY(0.6); }
+.stage-2 .leaves { opacity: 0.5; }
+
+.stage-3 .stem { opacity: 1; transform: scaleY(1); }
+.stage-3 .leaves { opacity: 1; }
+
+.stage-4 .stem { opacity: 1; transform: scaleY(1); }
+.stage-4 .leaves { opacity: 1; }
+.stage-4 .bud { opacity: 1; transform: scale(0.5); }
+
+.stage-5 .stem { opacity: 1; transform: scaleY(1); }
+.stage-5 .leaves { opacity: 1; }
+.stage-5 .bud { opacity: 1; transform: scale(0.8); }
+
+.stage-6 .stem { opacity: 1; transform: scaleY(1); }
+.stage-6 .leaves { opacity: 1; }
+.stage-6 .bud { opacity: 0; }
+.stage-6 .petals { opacity: 1; transform: scale(1); animation: bloom 1s ease-out; }
+
+@keyframes bloom {
+    0% { transform: scale(0) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Timer Display */
+.timer-display {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.timer-text {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--text-dark);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -2px;
+}
+
+.session-type {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-top: 10px;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+}
+
+.btn-secondary {
+    background: #e1e8ed;
+    color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+    background: #cbd5e0;
+}
+
+/* Stats Footer */
+footer {
+    border-top: 2px solid #f1f3f5;
+    padding-top: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+.stat-unit {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .timer-text {
+        font-size: 3rem;
+    }
+
+    .flower-container {
+        min-height: 200px;
+    }
+
+    #flowerSvg {
+        width: 150px;
+        height: 225px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .stats {
+        gap: 15px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* Timer States */
+.timer-running .timer-text {
+    color: var(--success-color);
+}
+
+.timer-paused .timer-text {
+    color: var(--text-light);
+}
+
+.timer-break .timer-text {
+    color: #3498db;
+}
