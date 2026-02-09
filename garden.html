@@ -31,9 +31,14 @@
                 <!-- Flowers will be rendered here by garden.js -->
             </div>
 
-            <!-- Garden stats -->
+            <!-- Garden stats and controls -->
             <div id="gardenStats" class="garden-stats hidden">
-                <p>Total flowers: <strong id="flowerCount">0</strong></p>
+                <p class="stat-info">Total flowers: <strong id="flowerCount">0</strong></p>
+                <div class="garden-controls">
+                    <button id="sortNewest" class="active" title="Show newest flowers first">Newest First</button>
+                    <button id="sortOldest" title="Show oldest flowers first">Oldest First</button>
+                    <button id="clearAll" title="Clear entire garden">Clear All</button>
+                </div>
             </div>
         </main>
     </div>

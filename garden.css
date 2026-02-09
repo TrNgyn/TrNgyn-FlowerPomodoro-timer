@@ -45,16 +45,67 @@
     border-radius: 15px;
     padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: var(--transition);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     animation: fadeIn 0.5s ease-in;
+    position: relative;
+    cursor: pointer;
 }
 
 .flower-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+}
+
+.flower-card .flower-info {
+    opacity: 0;
+    position: relative;
+    margin-top: 8px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    font-size: 0.8rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    text-transform: capitalize;
+    pointer-events: none;
+    line-height: 1.2;
+}
+
+.flower-card:hover .flower-info {
+    opacity: 1;
+}
+
+.flower-card .delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.flower-card:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: #cc0000;
+    transform: scale(1.1);
 }
 
 @keyframes fadeIn {
@@ -68,28 +119,76 @@
     }
 }
 
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
 .flower-card svg {
     width: 120px;
-    height: 180px;
+    height: 170px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 /* Garden stats */
 .garden-stats {
-    margin-top: 30px;
-    padding-top: 20px;
+    margin-top: 20px;
+    padding-top: 15px;
     border-top: 2px solid #f1f3f5;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.garden-stats p {
-    font-size: 1.1rem;
+.garden-stats .stat-info {
+    font-size: 1rem;
     color: var(--text-light);
 }
 
 .garden-stats strong {
     color: var(--primary-color);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+}
+
+.garden-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.garden-controls button {
+    padding: 8px 16px;
+    border: 2px solid var(--primary-color);
+    background: white;
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.garden-controls button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.garden-controls button.active {
+    background: var(--primary-color);
+    color: white;
 }
 
 /* Responsive adjustments */

@@ -21,11 +21,13 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--background);
     color: var(--text-dark);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    margin: 0;
+    overflow: hidden;
 }
 
 .container {
@@ -34,13 +36,18 @@ body {
     box-shadow: var(--shadow-lg);
     max-width: 600px;
     width: 100%;
-    padding: 40px;
+    padding: 25px;
+    max-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 /* Header */
 header {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     position: relative;
+    flex-shrink: 0;
 }
 
 .header-buttons {
@@ -48,13 +55,13 @@ header {
     gap: 10px;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--primary-color);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     text-align: center;
 }
 
@@ -146,13 +153,14 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 250px;
-    margin-bottom: 20px;
+    height: 170px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 #flowerSvg {
-    width: 200px;
-    height: 300px;
+    width: 140px;
+    height: 210px;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
@@ -203,11 +211,12 @@ header h1 {
 /* Timer Display */
 .timer-display {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    flex-shrink: 0;
 }
 
 .timer-text {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: bold;
     color: var(--text-dark);
     font-variant-numeric: tabular-nums;
@@ -215,25 +224,26 @@ header h1 {
 }
 
 .session-type {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-light);
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 /* Controls */
 .controls {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     flex-wrap: wrap;
+    flex-shrink: 0;
 }
 
 .btn {
-    padding: 15px 30px;
+    padding: 12px 24px;
     border: none;
     border-radius: 12px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
@@ -270,13 +280,15 @@ header h1 {
 /* Stats Footer */
 footer {
     border-top: 2px solid #f1f3f5;
-    padding-top: 20px;
+    padding-top: 12px;
+    flex-shrink: 0;
+    margin-top: auto;
 }
 
 .stats {
     display: flex;
     justify-content: space-around;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
@@ -286,21 +298,21 @@ footer {
 
 .stat-label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-light);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .stat-value {
     display: inline-block;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
     margin-right: 5px;
 }
 
 .stat-unit {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-light);
 }
 
@@ -311,12 +323,21 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
     .container {
-        padding: 25px;
+        padding: 20px;
+        max-height: calc(100vh - 20px);
+    }
+
+    header {
+        margin-bottom: 15px;
     }
 
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .header-buttons {
@@ -330,29 +351,42 @@ footer {
     }
 
     .timer-text {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .flower-container {
-        min-height: 200px;
+        height: 160px;
+        margin-bottom: 10px;
     }
 
     #flowerSvg {
-        width: 150px;
-        height: 225px;
+        width: 130px;
+        height: 195px;
+    }
+
+    .timer-display {
+        margin-bottom: 15px;
+    }
+
+    .controls {
+        margin-bottom: 15px;
     }
 
     .btn {
-        padding: 12px 20px;
+        padding: 10px 16px;
         font-size: 0.9rem;
     }
 
     .stats {
-        gap: 15px;
+        gap: 10px;
     }
 
     .stat-value {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    footer {
+        padding-top: 10px;
     }
 }
 
